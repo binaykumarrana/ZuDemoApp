@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="date"
+            type="java.lang.String" />
+
+        <variable
+            name="isprev"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="match"
+            type="com.example.demoapp.domain.model.Match" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp">
+
+            <ImageView
+                android:id="@+id/reminderIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/reminder"
+                android:visibility="@{!isprev ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/team_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{match.description}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title"
+                app:layout_constraintEnd_toStartOf="@id/reminderIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="KBkjbdbkdbjbdk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/match_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:paddingBottom="4dp"
+                android:text="@{`Match Day: ` + date}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/subheading2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/team_name"
+                tools:text="KBkjbdbkdbjbdk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/winner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{`Winner: ` + match.winner}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/subheading1"
+                android:visibility="@{isprev ? View.GONE : View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/match_day"
+                tools:text="KBkjbdbkdbjbdk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/highlights"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="@{match.highlights}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/body2"
+                android:visibility="@{isprev ? View.GONE : View.VISIBLE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/winner"
+                tools:text="KBkjbdbkdbjbdk" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

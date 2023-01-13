@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/matches_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:weightSum="1"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/upcoming_matches"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="0.47"
+                android:background="@color/purple_500"
+                android:gravity="center"
+                android:text="@string/upcoming_matches"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.06" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/previous_matches"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="0.47"
+                android:background="@color/purple_200"
+                android:gravity="center"
+                android:text="@string/previous_matches"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/matches_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/matches_option"
+            tools:listitem="@layout/holder_team" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/match_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="@color/purple_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/matches_recycler_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
